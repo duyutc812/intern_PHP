@@ -8,6 +8,5 @@
         die('connection failed: '. $conn->connect_error);
     }
     echo "Connected successfully";
-    echo "test change";
 
 ?>
