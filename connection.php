@@ -16,7 +16,7 @@
             // $conn->set_charset('UTF-8');
             // $conn->close();
             $conn = new mysqli($servername, $username, $password, $database_intern);
-            if($conn){ 
+            if($conn){
                 $sql = "CREATE TABLE db_posts (
                     id INT(6) AUTO_INCREMENT PRIMARY KEY,
                     title VARCHAR(255) NOT NULL,

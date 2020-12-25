@@ -18,24 +18,22 @@
         $conn = $connectDB->connectDB();
         require_once('./controllers/post_controller.php');
         $postController = new PostController();
-        // if (assert($_GET['page_layout'])) {
-        //     $page_layout = $_GET['page_layout'];
-        //     switch ($page_layout) {
-        //         case 'detail_post':
-        //             echo "detail post";
-        //             if (assert($_GET['id'])) {
-        //                 $id_post = $_GET['id'];
-        //                 $postController->getDetailPost($conn, $id_post);
-        //             }
-        //             break;
-        //         default:
-        //             break;
-        // }
-        // else {
-        //     $postController->getPost($conn);
-        // }
-        $postController->getPost($conn);
-    }
+        if (isset($_GET['page_layout'])) {
+            $page_layout = $_GET['page_layout'];
+            switch ($page_layout) {
+                case 'detail_post':
+                    if (isset($_GET['id'])) {
+                        $id_post = $_GET['id'];
+                        $postController->getDetailPost($conn, $id_post);
+                    }
+                    break;
+                default:
+                    echo "default";
+                    break;
+            }
+        } else {
+            $postController->getPost($conn);
+            }
     ?>
 </body>
 </html>

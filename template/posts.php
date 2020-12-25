@@ -50,7 +50,7 @@
                                                 <a href="#"><?php echo $row["id"]?></a>
                                             </td>
                                             <td>
-                                                <a href="index.php?page_layout=detail_post&<?php echo $row["id"]?>?>"><img src="./assets/img/<?php echo $row["image"]?>" alt="image"  style="width: 50px;height:50px"></a>
+                                                <a href="index.php?page_layout=detail_post&id=<?php echo $row["id"]?>"><img src="./assets/img/<?php echo $row["image"]?>" alt="image"  style="width: 50px;height:50px"></a>
                                             </td>
                                             <td style="text-align: left">
                                                 <a href="#"><?php echo $row["title"] ?></a>
