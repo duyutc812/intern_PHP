@@ -7,7 +7,17 @@
 
             require_once("./views/post_view.php");
             $postView = new PostView();
-            $postView->showAllPost($conn, $posts);
+            $postView->showAllPost($posts);
+        }
+
+        public function getDetailPost($conn, $id_post) {
+            require_once("./models/post_model.php");
+            $postModel= new PostModel();
+            $detail_post = $postModel->getModelDetailPost($conn, $id_post);
+
+            require_once("./views/detail_post_view.php");
+            $detailPostView = new DetailPostView();
+            $detailPostView->showDetailPost($detail_post);
         }
     }
 ?>

@@ -4,9 +4,12 @@
             <div class="panel-body">
                 <div class="bootstrap-table">
                     <div class="fixed-table-toolbar">
+                        <div class="bars pull-left">
+                            <h3><?php echo $row['title']; ?></h3>
+                        </div>
                         <div class="bars pull-right">
                             <div id="toolbar" class="btn-group">
-                                <!-- <a href="index.php?page_layout=add_user" class="btn btn-success"  style="background-color: #337ab7; border-color: #337ab7">New</a> -->
+                                <a href="index.php" class="btn btn-success"  style="background-color: white; border-color: gray;color: black">Back</a>
                             </div>
                         </div>
                     </div>
@@ -16,11 +19,7 @@
                         </div>
                         <table data-toolbar="#toolbar" data-toggle="table" class="table table-hover" style="text-align:center">
 					    <thead>
-    					    <tr>
-                                <th style="width: 100px">
-                                    <div class="th-inner sortable">ID</div>
-                                    <div class="fht-cell"></div>
-                                </th>
+    					   <!--  <tr>
                                 <th style="width: 250px">
                                     <div class="th-inner sortable">Thumb</div>
                                     <div class="fht-cell"></div>
@@ -29,7 +28,7 @@
                                     <div class="th-inner sortable">Title</div>
                                     <div class="fht-cell"></div>
                                 </th>
-                                <!-- <th style="">
+                                <th style="">
                                     <div class="th-inner ">Permission</div>
                                     <div class="fht-cell">
                                     </div>
@@ -37,32 +36,25 @@
                                 <th style="">
                                     <div class="th-inner ">Action</div>
                                     <div class="fht-cell"></div>
-                                </th> -->
-                            </tr>
+                                </th> 
+                            </tr>-->
                         </thead>
                         <tbody>
-                            <?php
-                                $sql_list_post = "select * from db_posts";
-                                $result_list_post = $conn_db->query($sql_list_post);
+                            <?php 
                                 if ($result_list_post->num_rows > 0)
                                 {
-                                    while ($row = $result_list_post->fetch_assoc())
-                                    {
-                            ?>
-                                        <tr data-index="0" style="text-align:center">
-                                            <td>
-                                                <a href="#"><?php echo $row["id"]?></a>
-                                            </td>
-                                            <td>
-                                                <a href="index.php?page_layout=details&id=<?php echo $row['id'] ?>"><img src="./img/<?php echo $row["image"]?>" alt="image"  style="width: 50px;height:50px"></a>
+                                    while ($row = $result_list_post->fetch_assoc()){?>
+                                        <tr style="text-align:center">
+                                            <td style="width: 250px">
+                                                <img src="./assets/img/<?php echo $row["image"]?>" alt="image"  style="width: 230px;height:230px">
                                             </td>
                                             <td style="text-align: left">
-                                                <a href="#"><?php echo $row["title"] ?></a>
+                                                <?php echo $row["description"] ?>
                                             </td>
                                         </tr>
                                     <?php
-                                    }
-                                } ?>
+                                } }
+                            ?>
                             </tbody>
 						</table>
                     </div>
