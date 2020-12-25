@@ -18,15 +18,15 @@
                         <thead>
                             <tr>
                                 <th style="width: 100px">
-                                    <div class="th-inner sortable">ID</div>
+                                    <div class="th-inner sortable"><b>ID</b></div>
                                     <div class="fht-cell"></div>
                                 </th>
                                 <th style="width: 250px">
-                                    <div class="th-inner sortable">Thumb</div>
+                                    <div class="th-inner sortable"><b>Thumb</b></div>
                                     <div class="fht-cell"></div>
                                 </th>
                                 <th>
-                                    <div class="th-inner sortable">Title</div>
+                                    <div class="th-inner sortable"><b>Title</b></div>
                                     <div class="fht-cell"></div>
                                 </th>
                                 <!-- <th style="">

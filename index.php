@@ -27,13 +27,24 @@
                         $postController->getDetailPost($conn, $id_post);
                     }
                     break;
+                case 'admin':
+                    if (isset($_GET['action']) && isset($_GET['id'])) {
+                        $action = $_GET['action'];
+                        $id_post = $_GET['id'];
+                        $postController->setPostAdmin($conn, $id_post);
+                    }
+                    else {
+                        $postController->getAllPostAdmin($conn);
+                    }
+                    break;
                 default:
                     echo "default";
                     break;
             }
-        } else {
+        }
+        else {
             $postController->getPost($conn);
-            }
+        }
     ?>
 </body>
 </html>
