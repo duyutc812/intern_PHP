@@ -1,4 +1,13 @@
-<!DOCTYPE html>
+<?php   
+    require_once('./connection.php');
+    $connectDB = new ConnectDB();
+    $conn = $connectDB->connectDB();
+
+    require_once('./controllers/post_controller.php');
+    $postController = new PostController();
+    $postController->getPost($conn);
+?>
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -11,23 +20,6 @@
     text-align: center;
    }
 </style>
-<body>
-    <?php
-        include ('./mvc/controllers/connect_db.php');
-        if (isset($_GET['page_layout'])) {
-            switch ($_GET['page_layout']) {
-                case 'details':
-                    include('./mvc/views/detail_post.php');
-                    break;
-                default:
-                    # code...
-                    break;
-            }
-        }
-        else
-        {
-            include_once('./mvc/views/list_post.php');
-        }
-    ?>
-</body>
-</html>
+<body> -->
+<!-- </body>
+</html> -->
