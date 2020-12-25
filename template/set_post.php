@@ -1,3 +1,15 @@
+<script type='text/javascript'>
+function preview_image(event) 
+{
+ var reader = new FileReader();
+ reader.onload = function()
+ {
+  var output = document.getElementById('output_image');
+  output.src = reader.result;
+ }
+ reader.readAsDataURL(event.target.files[0]);
+}
+</script>
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -5,7 +17,7 @@
                 <div class="bootstrap-table">
                     <div class="fixed-table-toolbar">
                         <div class="bars pull-left">
-                            <h3>Edits</h3>
+                            <h3>Edit</h3>
                         </div>
                         <div class="bars pull-right">
                             <div id="toolbar" class="btn-group">
@@ -54,8 +66,8 @@
                                 <th>
                                     <!-- <div class="th-inner sortable"><b>Thumb</b></div>
                                     <div class="fht-cell"></div> -->
-                                    <input type="file" name="image">
-                                    <img src="./assets/img/<?php echo $row['image']?>" alt="image" value="" style='width: 250px; height: 250px'>
+                                    <input type="file" name="image" style="padding-left: 29px" onchange="preview_image(event)">
+                                    <img id="output_image" src="./assets/img/<?php echo $row['image']?>" alt="image" value="" style='width: 250px; height: 250px'>
                                 </th>
                             </tr>
                             <tr>
@@ -66,18 +78,22 @@
                                 <th>
                                     <!-- <div class="th-inner sortable"><b>Thumb</b></div>
                                     <div class="fht-cell"></div> -->
-                                    <select name="status_sel" class="form-control" style="width: 120px">
-                                        <option value="<?php 
-                                            if ($row['status'] > 0) {
-                                                echo 'selected';
-                                            }
-                                        ?>">
+                                    <select name="status_sel" class="form-control" style="width: 120px; padding-left: 15px" >
+                                        <option selected value=1
+                                        <?php
+                                        if ($row['status']>0) {
+                                            echo 'selected';
+                                        }
+                                        ?>
+                                        >
                                         Enabled</option>
-                                        <option value="<?php 
-                                            if ($row['status'] = 0) {
-                                                echo 'selected';
-                                            }
-                                        ?>">
+                                        <option value=2
+                                        <?php
+                                        if ($row['status']==0) {
+                                            echo 'selected';
+                                        }
+                                        ?>
+                                        >
                                         Disabled</option>
                                     </select>
                                 </th>
