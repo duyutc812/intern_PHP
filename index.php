@@ -14,37 +14,54 @@
 <body>
     <?php
         require_once('./connection.php');
-        $connectDB = new ConnectDB();
-        $conn = $connectDB->connectDB();
+        $db = new Database();
+        $db->connect();
         require_once('./controllers/post_controller.php');
         $postController = new PostController();
-        if (isset($_GET['page_layout'])) {
-            $page_layout = $_GET['page_layout'];
-            switch ($page_layout) {
-                case 'detail_post':
+        if (isset($_GET['controller'])) {
+            $controller = $_GET['controller'];
+            switch ($controller) {
+                case 'detail':
                     if (isset($_GET['id'])) {
                         $id_post = $_GET['id'];
-                        $postController->getDetailPost($conn, $id_post);
-                    }
+                        $postController->getDetailPost($id_post);
                     break;
+                    }
                 case 'admin':
-                    if (isset($_GET['action']) && isset($_GET['id'])) {
-                        $action = $_GET['action'];
-                        $id_post = $_GET['id'];
-                        $postController->setPostAdmin($conn, $id_post);
+                    if (isset($_GET['action'])) {
+                        switch ($_GET['action']) {
+                            case 'show':
+                                if (isset($_GET['id'])) {
+                                    $action = $_GET['action'];
+                                    $id_post = $_GET['id'];
+                                    $postController->setPostAdmin($id_post);
+                                }
+                                break;
+                            case 'add':
+                                $postController->addPostAdmin();
+                                break;
+                            default:
+                                echo "admin";
+                                break;
+                        }
                     }
                     else {
-                        $postController->getAllPostAdmin($conn);
+                        $postController->getAllPostAdmin();
                     }
                     break;
                 default:
                     echo "default";
                     break;
+        
             }
         }
+            //         }
+            //        
+            //     
         else {
-            $postController->getPost($conn);
+            $postController->getPost();
         }
+
     ?>
 </body>
 </html>

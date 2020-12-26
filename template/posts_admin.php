@@ -6,7 +6,7 @@
                     <div class="fixed-table-toolbar">
                         <div class="bars pull-right">
                             <div id="toolbar" class="btn-group">
-                                <a href="index.php?page_layout=add_user" class="btn btn-success"  style="background-color: #337ab7; border-color: #337ab7">New</a>
+                                <a href="index.php?controller=admin&action=add" class="btn btn-success"  style="background-color: #337ab7; border-color: #337ab7">New</a>
                             </div>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                                             </td>
                                             <td class="form-group">
                                                 <a href="#" class="btn">Show</a>
-                                                <a href="index.php?page_layout=admin&action=show&id=<?php echo $row['id'] ?>" class="btn">Edit</a>
+                                                <a href="index.php?controller=admin&action=show&id=<?php echo $row['id'] ?>" class="btn">Edit</a>
                                                 <a href="#" class="btn">Delete</a>
                                             </td>
                                         </tr>
@@ -91,7 +91,7 @@
                     <nav>
 
                         <ul class="pagination">
-                          <li class="page-item"><a class="page-link" href="index.php?lang=en&amp;page_layout=shop&amp;page=1">«</a></li><li class="page-item active"><a class="page-link" href="index.php?lang=en&amp;page_layout=shop&amp;page=1">1</a></li><li class="page-item "><a class="page-link" href="index.php?lang=en&amp;page_layout=shop&amp;page=2">2</a></li><li class="page-item "><a class="page-link" href="index.php?lang=en&amp;page_layout=shop&amp;page=3">3</a></li><li class="page-item"><a class="page-link" href="index.php?lang=en&amp;page_layout=shop&amp;page=2">»</a></li>
+                          <li class="page-item"><a class="page-link" href="index.php?lang=en&amp;controller=shop&amp;page=1">«</a></li><li class="page-item active"><a class="page-link" href="index.php?lang=en&amp;controller=shop&amp;page=1">1</a></li><li class="page-item "><a class="page-link" href="index.php?lang=en&amp;controller=shop&amp;page=2">2</a></li><li class="page-item "><a class="page-link" href="index.php?lang=en&amp;controller=shop&amp;page=3">3</a></li><li class="page-item"><a class="page-link" href="index.php?lang=en&amp;controller=shop&amp;page=2">»</a></li>
                         </ul>
                     </nav>
                 </div>

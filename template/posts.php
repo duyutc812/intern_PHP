@@ -6,7 +6,7 @@
                     <div class="fixed-table-toolbar">
                         <div class="bars pull-right">
                             <div id="toolbar" class="btn-group">
-                                <!-- <a href="index.php?page_layout=add_user" class="btn btn-success"  style="background-color: #337ab7; border-color: #337ab7">New</a> -->
+                                <!-- <a href="index.php?controller=add_user" class="btn btn-success"  style="background-color: #337ab7; border-color: #337ab7">New</a> -->
                             </div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                                                 <a href="#"><?php echo $row["id"]?></a>
                                             </td>
                                             <td>
-                                                <a href="index.php?page_layout=detail_post&id=<?php echo $row["id"]?>"><img src="./assets/img/<?php echo $row["image"]?>" alt="image"  style="width: 50px;height:50px"></a>
+                                                <a href="index.php?controller=detail&id=<?php echo $row["id"]?>"><img src="./assets/img/<?php echo $row["image"]?>" alt="image"  style="width: 50px;height:50px"></a>
                                             </td>
                                             <td style="text-align: left">
                                                 <a href="#"><?php echo $row["title"] ?></a>
