@@ -34,7 +34,7 @@
                                 if (isset($_GET['id'])) {
                                     $action = $_GET['action'];
                                     $id_post = $_GET['id'];
-                                    $postController->setPostAdmin($id_post);
+                                    $postController->editPostAdmin($id_post);
                                 }
                                 break;
                             case 'add':

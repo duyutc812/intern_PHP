@@ -57,7 +57,7 @@
                                             </td>
                                             <td>
                                                 <?php 
-                                                    if ($row['status'] > 0) {
+                                                    if ($row['status'] == 1) {
                                                         echo 'Enabled';
                                                     }
                                                     else {

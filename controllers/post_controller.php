@@ -30,18 +30,33 @@
             $postView->showAllPostAdmin($posts);
         }
 
-        public function setPostAdmin($id_post) {
+        public function editPostAdmin($id_post) {
             $posts = $this->postModel->getDetailPost($id_post);
             require_once("./views/set_post_view.php");
             $postView = new SetPost();
+            if (isset($_POST['smb'])) {
+                $title = $_POST['title'];
+                $description = $_POST['description'];
+                if ($_POST['image']) {
+                    $image = $_POST['image'];
+                } else $image = $posts->fetch_assoc()['image'];
+                $status = $_POST['status'];
+                $this->postModel->updatePost($id_post, $title, $description, $image, $status);
+            }
             $postView->showPost($posts);
         }
 
         public function addPostAdmin() {
-            $posts = $this->postModel->addPost();
             require_once("./views/add_post_view.php");
-            $postView = new AddPost();
-            $postView->addPost();
+            $addView = new AddPost();
+            if (isset($_POST['smb'])) {
+                $title = $_POST['title'];
+                $description = $_POST['description'];
+                $image = $_POST['image'];
+                $status = $_POST['status'];
+                $this->postModel->addPost($title, $description, $image, $status);
+            }
+            $addView->addPost();
         }
     }
 ?>

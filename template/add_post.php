@@ -31,7 +31,8 @@ function preview_image(event)
                         </div>
                         <table data-toolbar="#toolbar" data-toggle="table" class="table table-hover">
                         <thead>
-                            <tr>
+                            <form method="post">
+                               <tr>
                                 <th style="width: 20%">
                                     <div class="th-inner sortable"><b>Title</b></div>
                                     <div class="fht-cell"></div>
@@ -41,52 +42,50 @@ function preview_image(event)
                                     <div class="fht-cell"></div> -->
                                     <input type="text" name="title" style="width: 95%" placeholder="Title" style=" padding-left:20px">
                                 </th>
-                                
-                            </tr>
-                            <tr>
-                                <th>
-                                    <div class="th-inner sortable"><b>Description</b></div>
-                                    <div class="fht-cell"></div>
-                                </th>
-                                <th>
-                                    <!-- <div class="th-inner sortable"><b>Thumb</b></div>
-                                    <div class="fht-cell"></div> -->
-                                    <input type="text" name="description" style="width: 95%" placeholder="Description">
-                                </th>
-                            </tr>
-                            <tr>
-                                <th>
-                                    <div class="th-inner sortable"><b>Image</b></div>
-                                    <div class="fht-cell"></div>
-                                </th>
-                                <th>
-                                    <!-- <div class="th-inner sortable"><b>Thumb</b></div>
-                                    <div class="fht-cell"></div> -->
-                                    <input type="file" name="image" onchange="preview_image(event)">
-                                    <img id="output_image" src="" alt="image" value="" style='width: 250px; height: 250px'>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th>
-                                    <div class="th-inner sortable"><b>Status</b></div>
-                                    <div class="fht-cell"></div>
-                                </th>
-                                <th>
-                                    <!-- <div class="th-inner sortable"><b>Thumb</b></div>
-                                    <div class="fht-cell"></div> -->
-                                    <select name="status_sel" class="form-control" style="width: 120px; padding-left: 15px" >
-                                        <option selected value=1>Enabled</option>
-                                        <option value=2>Disabled</option>
-                                    </select>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th colspan="2">
-                                    <button type="submit">
-                                        Submit
-                                    </button>
-                                </th>
-                            </tr>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <div class="th-inner sortable"><b>Description</b></div>
+                                        <div class="fht-cell"></div>
+                                    </th>
+                                    <th>
+                                        <!-- <div class="th-inner sortable"><b>Thumb</b></div>
+                                        <div class="fht-cell"></div> -->
+                                        <input type="text" name="description" style="width: 95%" placeholder="Description">
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <div class="th-inner sortable"><b>Image</b></div>
+                                        <div class="fht-cell"></div>
+                                    </th>
+                                    <th>
+                                        <!-- <div class="th-inner sortable"><b>Thumb</b></div>
+                                        <div class="fht-cell"></div> -->
+                                        <input type="file" name="image" onchange="preview_image(event)">
+                                        <img id="output_image" src="" alt="image" value="" style='width: 250px; height: 250px'>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <div class="th-inner sortable"><b>Status</b></div>
+                                        <div class="fht-cell"></div>
+                                    </th>
+                                    <th>
+                                        <!-- <div class="th-inner sortable"><b>Thumb</b></div>
+                                        <div class="fht-cell"></div> -->
+                                        <select name="status" class="form-control" style="width: 120px; padding-left: 15px" >
+                                            <option selected value=1>Enabled</option>
+                                            <option value=2>Disabled</option>
+                                        </select>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th colspan="2">
+                                        <button type="submit" name='smb'>Submit</button>
+                                    </th>
+                                </tr>
+                            </form>
                         </thead>
                         </table>
                     </div>

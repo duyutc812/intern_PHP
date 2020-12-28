@@ -9,6 +9,9 @@ function preview_image(event)
  }
  reader.readAsDataURL(event.target.files[0]);
 }
+<?php
+    if ($posts->num_rows > 0) {
+        while ($row = $posts->fetch_assoc()) {?>
 </script>
 <div class="row">
     <div class="col-lg-12">
@@ -32,9 +35,7 @@ function preview_image(event)
                         </div>
                         <table data-toolbar="#toolbar" data-toggle="table" class="table table-hover">
                         <thead>
-                            <?php
-                                if ($posts->num_rows > 0) {
-                                    while ($row = $posts->fetch_assoc()) {?>
+                            <form  method="post" accept-charset="utf-8">
                             <tr>
                                 <th style="width: 20%">
                                     <div class="th-inner sortable"><b>Title</b></div>
@@ -45,7 +46,6 @@ function preview_image(event)
                                     <div class="fht-cell"></div> -->
                                     <input type="text" name="title" style="width: 95%" placeholder="Title" style=" padding-left:20px" value="<?php echo $row['title']?>">
                                 </th>
-                                
                             </tr>
                             <tr>
                                 <th>
@@ -66,7 +66,7 @@ function preview_image(event)
                                 <th>
                                     <!-- <div class="th-inner sortable"><b>Thumb</b></div>
                                     <div class="fht-cell"></div> -->
-                                    <input type="file" name="image" onchange="preview_image(event)">
+                                    <input type="file" name="image" onchange="preview_image(event)" value="<?php echo $row['image'] ?>">
                                     <img id="output_image" src="./assets/img/<?php echo $row['image']?>" alt="image" value="" style='width: 250px; height: 250px'>
                                 </th>
                             </tr>
@@ -78,10 +78,10 @@ function preview_image(event)
                                 <th>
                                     <!-- <div class="th-inner sortable"><b>Thumb</b></div>
                                     <div class="fht-cell"></div> -->
-                                    <select name="status_sel" class="form-control" style="width: 120px; padding-left: 15px" >
+                                    <select name="status" class="form-control" style="width: 120px; padding-left: 15px" >
                                         <option selected value=1
                                         <?php
-                                        if ($row['status']>0) {
+                                        if ($row['status'] == 1) {
                                             echo 'selected';
                                         }
                                         ?>
@@ -89,7 +89,7 @@ function preview_image(event)
                                         Enabled</option>
                                         <option value=2
                                         <?php
-                                        if ($row['status']==0) {
+                                        if ($row['status'] == 2) {
                                             echo 'selected';
                                         }
                                         ?>
@@ -101,11 +101,12 @@ function preview_image(event)
                             <?php }} ?>
                             <tr>
                                 <th colspan="2">
-                                    <button type="submit">
+                                    <button type="submit" name="smb">
                                         Submit
                                     </button>
                                 </th>
                             </tr>
+                            </form>
                         </thead>
                         </table>
                     </div>
