@@ -27,37 +27,37 @@
             $posts = $this->postModel->getAllPost();
             require_once("./views/post_view_admin.php");
             $postView = new PostViewAdmin();
-            if (isset($_POST['smb'])) {
-                 if(isset($_POST['post_page'])) {
-                $rec_onPage = $_POST['post_page'];
-                switch ($rec_onPage) {
-                    case 2:
-                        $rec_onPage = 2;
-                        break;
-                    case 4:
-                        $rec_onPage = 4;
-                        break;
-                    case 5:
-                        $rec_onPage = 5;
-                        break;
-                    case 'all':
-                        $rec_onPage = 100;
-                    default:
-                        # code...
-                        break;
-                }
-                }
-            }
-            else {
-                    $rec_onPage = 2;
-                }
+            // if (isset($_POST['smb'])) {
+            //      if(isset($_POST['post_page'])) {
+            //     $rec_onPage = $_POST['post_page'];
+            //     switch ($rec_onPage) {
+            //         case 2:
+            //             $rec_onPage = 2;
+            //             break;
+            //         case 4:
+            //             $rec_onPage = 4;
+            //             break;
+            //         case 5:
+            //             $rec_onPage = 5;
+            //             break;
+            //         case 'all':
+            //             $rec_onPage = 100;
+            //         default:
+            //             # code...
+            //             break;
+            //     }
+            //     }
+            // }
+            // else {
+            //         $rec_onPage = 2;
+            //     }
             if(isset($_GET['page'])) {
                 $page = $_GET['page'];
             }
             else {
                 $page = 1;
             }
-            // $rec_onPage = 4;
+            $rec_onPage = 3;
             $key_onPage = ($page - 1) * $rec_onPage;
             $total_page = ceil($posts->num_rows / $rec_onPage);
             $page_navigation = '';
