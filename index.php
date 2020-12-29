@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <base href="http://localhost/intern_PHP/"/>
     <link href="./assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="./assets/css/datepicker3.css" rel="stylesheet">
     <link href="./assets/css/bootstrap-table.css" rel="stylesheet">
@@ -32,13 +33,18 @@
                         switch ($_GET['action']) {
                             case 'show':
                                 if (isset($_GET['id'])) {
-                                    $action = $_GET['action'];
                                     $id_post = $_GET['id'];
                                     $postController->editPostAdmin($id_post);
                                 }
                                 break;
                             case 'add':
                                 $postController->addPostAdmin();
+                                break;
+                            case 'delete':
+                                if (isset($_GET['id'])) {
+                                    $id_post = $_GET['id'];
+                                    $postController->deletePostAdmin($id_post);
+                                }
                                 break;
                             default:
                                 echo "admin";
@@ -52,12 +58,8 @@
                 default:
                     echo "default";
                     break;
-        
             }
         }
-            //         }
-            //        
-            //     
         else {
             $postController->getPost();
         }

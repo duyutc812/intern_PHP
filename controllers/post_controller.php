@@ -14,7 +14,7 @@
             require_once("./views/post_view.php");
             $postView = new PostView();
             $postView->showAllPost($posts);
-        }
+        } 
 
         public function getDetailPost($id_post) {
             $detail_post = $this->postModel->getDetailPost($id_post);
@@ -27,7 +27,62 @@
             $posts = $this->postModel->getAllPost();
             require_once("./views/post_view_admin.php");
             $postView = new PostViewAdmin();
-            $postView->showAllPostAdmin($posts);
+            if (isset($_POST['smb'])) {
+                 if(isset($_POST['post_page'])) {
+                $rec_onPage = $_POST['post_page'];
+                switch ($rec_onPage) {
+                    case 2:
+                        $rec_onPage = 2;
+                        break;
+                    case 4:
+                        $rec_onPage = 4;
+                        break;
+                    case 5:
+                        $rec_onPage = 5;
+                        break;
+                    case 'all':
+                        $rec_onPage = 100;
+                    default:
+                        # code...
+                        break;
+                }
+                }
+            }
+            else {
+                    $rec_onPage = 2;
+                }
+            if(isset($_GET['page'])) {
+                $page = $_GET['page'];
+            }
+            else {
+                $page = 1;
+            }
+            // $rec_onPage = 4;
+            $key_onPage = ($page - 1) * $rec_onPage;
+            $total_page = ceil($posts->num_rows / $rec_onPage);
+            $page_navigation = '';
+            $page_prev = $page - 1;
+            if($page_prev <= 0) {
+                $page_prev = 1;
+            }
+            // prev 
+            $page_navigation .= '<li class="page-item"><a class="page-link" href="index.php?controller=admin&page='.$page_prev.'">&laquo;</a></li>';
+            for($i = 1; $i <= $total_page; $i++) {
+                if ($i == $page) {
+                    $active = 'active';
+                }
+                else {
+                    $active = '';
+                }
+            $page_navigation .= '<li class="page-item '.$active.'"><a class="page-link" href="index.php?controller=admin&page='.$i.'">'.$i.'</a></li>';
+            }
+            # next
+            $page_next = $page + 1;
+            if($page_next >= $total_page) {
+                $page_next = $total_page;
+            }
+            $page_navigation .= '<li class="page-item"><a class="page-link" href="index.php?controller=admin&page='.$page_next.'">&raquo;</a></li>';
+            $postView->showAllPostAdmin($this->postModel->postNavigation($key_onPage, $rec_onPage), $page_navigation);
         }
 
         public function editPostAdmin($id_post) {
@@ -57,6 +112,10 @@
                 $this->postModel->addPost($title, $description, $image, $status);
             }
             $addView->addPost();
+        }
+
+        public function deletePostAdmin($id_post) {
+            $this->postModel->delPost($id_post);
         }
     }
 ?>

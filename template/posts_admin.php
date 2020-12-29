@@ -68,7 +68,7 @@
                                             <td class="form-group">
                                                 <a href="#" class="btn">Show</a>
                                                 <a href="index.php?controller=admin&action=show&id=<?php echo $row['id'] ?>" class="btn">Edit</a>
-                                                <a href="#" class="btn">Delete</a>
+                                                <a href="index.php?controller=admin&action=delete&id=<?php echo $row['id'] ?>" onclick="return confirm('Are you sure?')">Delete</a>
                                             </td>
                                         </tr>
                                     <?php
@@ -79,22 +79,23 @@
                     </div>
                 <div class="fixed-table-pagination"></div></div></div><div class="clearfix"></div>
             </div>
-            <label for="post_page">Page:</label>
-                        <select id="post_page">
-                            <option value="5">5</option>
-                            <option value="10">10</optioal>
-                            <option value="50">50</option>
-                            <option value="all">all</option>
-                        </select>
-               <div class="product-pagination text-center">
-                    
-                    <nav>
-
+                <label for="post_page">Page:</label>
+                <select name="post_page">
+                    <option value="5">5</option>
+                    <option value="10">10</optioal>
+                    <option value="50">50</option>
+                    <option value="all">all</option>
+                </select>
+            </form>
+            <div class="product-pagination text-center">
+                <div class="panel-footer">
+                    <nav aria-label="Page navigation example">
                         <ul class="pagination">
-                          <li class="page-item"><a class="page-link" href="index.php?lang=en&amp;controller=shop&amp;page=1">«</a></li><li class="page-item active"><a class="page-link" href="index.php?lang=en&amp;controller=shop&amp;page=1">1</a></li><li class="page-item "><a class="page-link" href="index.php?lang=en&amp;controller=shop&amp;page=2">2</a></li><li class="page-item "><a class="page-link" href="index.php?lang=en&amp;controller=shop&amp;page=3">3</a></li><li class="page-item"><a class="page-link" href="index.php?lang=en&amp;controller=shop&amp;page=2">»</a></li>
+                            <?php echo $page_navigation; ?>
                         </ul>
                     </nav>
                 </div>
+            </div>
             </div>
         </div>
     </div>

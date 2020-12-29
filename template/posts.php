@@ -29,15 +29,6 @@
                                     <div class="th-inner sortable"><b>Title</b></div>
                                     <div class="fht-cell"></div>
                                 </th>
-                                <!-- <th style="">
-                                    <div class="th-inner ">Permission</div>
-                                    <div class="fht-cell">
-                                    </div>
-                                </th>
-                                <th style="">
-                                    <div class="th-inner ">Action</div>
-                                    <div class="fht-cell"></div>
-                                </th> -->
                             </tr>
                         </thead>
                         <tbody>
