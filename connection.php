@@ -7,15 +7,18 @@
         private $database_intern = 'intern_php';
 
         public function connect() {
+            // connect
             $this->conn = new mysqli($this->servername, $this->username, $this->password);
             if(!$this->conn){
                 die("Connection failed: " .$this->conn->connect_error());
             }
+            //create database
             $sql_create_db = 'create database '.$this->database_intern;
             if ($this->conn->query($sql_create_db)){
                 echo "Database created successfully!";
             }
             $this->conn->set_charset('UTF-8');
+            //  create table
             $this->conn = new mysqli($this->servername, $this->username, $this->password, $this->database_intern);
             if($this->conn){
                 $sql = "CREATE TABLE db_posts (
@@ -36,6 +39,7 @@
             }
         }
 
+        // close
         public function closeDatabase() {
             if ($this->conn) {
                 $this->conn.close();

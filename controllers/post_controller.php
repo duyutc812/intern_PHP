@@ -3,11 +3,11 @@
 
     class PostController {
         protected $postModel;
-
         public function __construct() {
             $this->postModel = new PostModel();
         }
 
+        // list post customer
         public function getPost() {
             $posts = $this->postModel->getAllPost();
 
@@ -16,6 +16,7 @@
             $postView->showAllPost($posts);
         } 
 
+        // detail post customer
         public function getDetailPost($id_post) {
             $detail_post = $this->postModel->getDetailPost($id_post);
             require_once("./views/detail_post_view.php");
@@ -23,6 +24,7 @@
             $detailPostView->showDetailPost($detail_post);
         }
 
+        // list post Admin
         public function getAllPostAdmin() {
             $posts = $this->postModel->getAllPost();
             require_once("./views/post_view_admin.php");
@@ -87,6 +89,7 @@
             $postView->showAllPostAdmin($this->postModel->postNavigation($key_onPage, $rec_onPage), $page_navigation);
         }
 
+        // edit post Admin
         public function editPostAdmin($id_post) {
             $posts = $this->postModel->getDetailPost($id_post);
             require_once("./views/edit_post_view.php");
@@ -103,6 +106,7 @@
             $postView->editPost($posts);
         }
 
+        // add post Admin
         public function addPostAdmin() {
             require_once("./views/add_post_view.php");
             $addView = new AddPost();
@@ -116,6 +120,7 @@
             $addView->addPost();
         }
 
+        //delete post Admin
         public function deletePostAdmin($id_post) {
             $this->postModel->delPost($id_post);
         }

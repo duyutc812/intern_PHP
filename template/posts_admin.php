@@ -87,7 +87,7 @@
                     <option value="50">50</option>
                     <option value="all">all</option>
                 </select>
-                <button type="submit" name="smb">choose</button>
+                <!-- <button type="submit" name="smb">choose</button> -->
             </form>
             <div class="product-pagination text-center">
                 <div class="panel-footer">

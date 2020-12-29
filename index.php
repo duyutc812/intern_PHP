@@ -14,11 +14,14 @@
 </style>
 <body>
     <?php
+        // connect to DB
         require_once('./connection.php');
         $db = new Database();
         $db->connect();
         require_once('./controllers/post_controller.php');
         $postController = new PostController();
+
+        // get controller
         if (isset($_GET['controller'])) {
             $controller = $_GET['controller'];
             switch ($controller) {
