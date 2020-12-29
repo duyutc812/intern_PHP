@@ -47,7 +47,9 @@
                                 }
                                 break;
                             default:
-                                echo "admin";
+                                ?>
+                                <h1>404</h1>
+                                <?php
                                 break;
                         }
                     }
@@ -56,7 +58,9 @@
                     }
                     break;
                 default:
-                    echo "default";
+                    ?>
+                    <h1>404</h1>
+                    <?php
                     break;
             }
         }
