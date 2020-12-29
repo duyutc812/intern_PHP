@@ -1,3 +1,10 @@
+<?php 
+    if (isset($_POST['smb'])) {
+        require_once('./models/post_model.php');
+        $postModel = new PostModel();
+        $postModel->insertData();
+    }
+ ?>
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-default">
@@ -49,7 +56,14 @@
                                         </tr>
                                     <?php 
                                     }
-                                } ?>
+                                } else {
+                                    ?>
+                                    <form method="post" accept-charset="utf-8">
+                                        <button type="submit" name="smb">Insert Data</button>
+                                    </form>
+                                    
+                                <?php 
+                            } ?>
                             </tbody>
                         </table>
                     </div>

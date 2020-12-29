@@ -31,15 +31,21 @@
                 case 'admin':
                     if (isset($_GET['action'])) {
                         switch ($_GET['action']) {
-                            case 'show':
+                            
+                            // edit post - Admin
+                            case 'edit':
                                 if (isset($_GET['id'])) {
                                     $id_post = $_GET['id'];
                                     $postController->editPostAdmin($id_post);
                                 }
                                 break;
+
+                            // add post - Admin
                             case 'add':
                                 $postController->addPostAdmin();
                                 break;
+
+                            // delete post - Admin
                             case 'delete':
                                 if (isset($_GET['id'])) {
                                     $id_post = $_GET['id'];

@@ -34,7 +34,7 @@
             $this->update_at = date('Y-m-d H-i-s');
             $sql = "INSERT INTO db_posts VALUES('', '$this->title', '$this->description', '$this->image', '$this->status', '$this->create_at', '$this->update_at')";
             if ($this->db->conn->query($sql)) {
-                header('location: index.php?controller=admin');
+                header('location:../intern_PHP/admin');
             }
             else {
                 die("no result add!");
@@ -51,7 +51,7 @@
             $sql = "UPDATE db_posts set title = '$this->title', description = '$this->description', image = '$this->image', status = '$this->status', update_at = '$this->update_at' WHERE id = $id_post;
             ";
             if ($this->db->conn->query($sql)) {
-                header('location: index.php?controller=admin');
+                header('location:../intern_PHP/admin');
             }
             else {
                 die("no result update!");
@@ -61,7 +61,7 @@
         public function delPost($id_post) {
             $sql = "DELETE FROM db_posts WHERE id = $id_post";
             if ($this->db->conn->query($sql)) {
-                header('location: index.php?controller=admin');
+                header('location:../intern_PHP/admin');
             }
             else {
                 die("no result delete!");
@@ -72,6 +72,28 @@
             $sql = "SELECT * FROM db_posts ORDER BY id ASC LIMIT $key_onPage, $rec_onPage";
             $result = $this->db->conn->query($sql);
             return $result;
+        }
+
+        public function insertData() {
+            $this->create_at = date('Y-m-d H-i-s');
+            $this->update_at = date('Y-m-d H-i-s');
+            $sql = "INSERT into db_posts VALUES ('', 'title1', 'description1', 'image.jpg', 1, '$this->create_at', '$this->update_at'), 
+                                                ('', 'title2', 'description2', 'abc.jpg', 2, '$this->create_at', '$this->update_at'), 
+                                                ('', 'title3', 'description3', 'abc.jpg', 1, '$this->create_at', '$this->update_at'), 
+                                                ('', 'title4', 'description4', 'image.jpg', 1, '$this->create_at', '$this->update_at'), 
+                                                ('', 'title5', 'description5', 'image.jpg', 2, '$this->create_at', '$this->update_at'), 
+                                                ('', 'title6', 'description6', 'image.jpg', 1, '$this->create_at', '$this->update_at'), 
+                                                ('', 'title7', 'description7', 'image.jpg', 1, '$this->create_at', '$this->update_at'), 
+                                                ('', 'title8', 'description8', 'abc.jpg', 1, '$this->create_at', '$this->update_at'), 
+                                                ('', 'title9', 'description9', 'image.jpg', 1, '$this->create_at', '$this->update_at'), 
+                                                ('', 'title10', 'description10', 'image.jpg', 1, '$this->create_at', '$this->update_at'), 
+                                                ('', 'title11', 'description11', 'image.jpg', 1, '$this->create_at', '$this->update_at')";
+            if ($this->db->conn->query($sql)) {
+                header('location:../intern_PHP/');
+            }
+            else {
+                die("no result insert!");
+            }
         }
     }
 ?>

@@ -67,7 +67,7 @@
                                             </td>
                                             <td class="form-group">
                                                 <a href="#" class="btn">Show</a>
-                                                <a href="index.php?controller=admin&action=show&id=<?php echo $row['id'] ?>" class="btn">Edit</a>
+                                                <a href="index.php?controller=admin&action=edit&id=<?php echo $row['id'] ?>" class="btn">Edit</a>
                                                 <a href="index.php?controller=admin&action=delete&id=<?php echo $row['id'] ?>" onclick="return confirm('Are you sure?')">Delete</a>
                                             </td>
                                         </tr>
@@ -79,6 +79,7 @@
                     </div>
                 <div class="fixed-table-pagination"></div></div></div><div class="clearfix"></div>
             </div>
+            <form method="post" accept-charset="utf-8">
                 <label for="post_page">Page:</label>
                 <select name="post_page">
                     <option value="5">5</option>
@@ -86,6 +87,7 @@
                     <option value="50">50</option>
                     <option value="all">all</option>
                 </select>
+                <button type="submit" name="smb">choose</button>
             </form>
             <div class="product-pagination text-center">
                 <div class="panel-footer">
