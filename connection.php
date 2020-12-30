@@ -1,14 +1,14 @@
 <?php 
     class Database {
         public $conn = NULL;
-        private $servername = 'localhost';
+        private $server_name = 'localhost';
         private $username = 'root';
         private $password = '';
         private $database_intern = 'intern_php';
 
         public function connect() {
             // connect
-            $this->conn = new mysqli($this->servername, $this->username, $this->password);
+            $this->conn = new mysqli($this->server_name, $this->username, $this->password);
             if(!$this->conn){
                 die("Connection failed: " .$this->conn->connect_error());
             }
@@ -21,7 +21,7 @@
                 $this->conn->set_charset('UTF-8');
             }
              // create table
-            $this->conn = new mysqli($this->servername, $this->username, $this->password, $this->database_intern);
+            $this->conn = new mysqli($this->server_name, $this->username, $this->password, $this->database_intern);
             // check table exists
             $table_exists = $this->conn->query("SELECT * FROM db_post");
             if($table_exists == FALSE)
@@ -41,57 +41,77 @@
             }
         }
 
-        // close
-        public function closeDatabase() {
-            if ($this->conn) {
-                $this->conn.close();
-            }
-        }
+        // // close
+        // public function closeDatabase() {
+        //     if ($this->conn) {
+        //         $this->conn->close();
+        //     }
+        // }
 
         public function sql_getPost() {
+            // $this->conn = new mysqli($this->server_name, $this->username, $this->password, $this->database_intern);
             $sqlGetPost = "SELECT * FROM db_posts";
-            return $sqlGetPost;
+            $result = $this->conn->query($sqlGetPost);
+            return $result;
         }
 
         public function sql_getDetailPost($id_post) {
+            // $this->conn = new mysqli($this->server_name, $this->username, $this->password, $this->database_intern);
             $sqlGetDetailPost = "SELECT * FROM db_posts WHERE id = $id_post";
-            return $sqlGetDetailPost;
+            $result = $this->conn->query($sqlGetDetailPost);
+            return $result;
         }
 
-        public function sql_addPost($title, $description, $image, $status, $create_at, $update_at) {
-            $sqlAddPost = "INSERT INTO db_posts VALUES('', '$title', '$description', '$image', '$status', '$create_at', '$update_at')";
-            return $sqlAddPost;
+        public function sql_addPost($title, $description, $image, $status) {
+            // $this->conn = new mysqli($this->server_name, $this->username, $this->password, $this->database_intern);
+            $create_at = date('Y-m-d H-i-s');
+            $update_at = date('Y-m-d H-i-s');
+            $sqlAddPost = "INSERT INTO db_posts VALUES(NULL, '$title', '$description', '$image', '$status', '$create_at', '$update_at')";
+            $result = $this->conn->query($sqlAddPost);
+            return $result;
         }
 
-        public function sql_updatePost($id_post, $title, $description, $image, $status, $update_at) {
+        public function sql_updatePost($id_post, $title, $description, $image, $status) {
+            // $this->conn = new mysqli($this->server_name, $this->username, $this->password, $this->database_intern);
+            $update_at = date('Y-m-d H-i-s');
             $sqlUpdatePost = "UPDATE db_posts set title = '$title', description = '$description', image = '$image', status = '$status', update_at = '$update_at' WHERE id = $id_post;
             ";
-            return $sqlUpdatePost;
+            $result = $this->conn->query($sqlUpdatePost);
+            return $result;
         }
 
         public function sql_deletePost($id_post) {
+            // $this->conn = new mysqli($this->server_name, $this->username, $this->password, $this->database_intern);
             $sqlDeletePost = "DELETE FROM db_posts WHERE id = $id_post";
-            return $sqlDeletePost;
+            $result = $this->conn->query($sqlDeletePost);
+            return $result;
         }
 
         public function sql_postPaginator($key_onPage, $rec_onPage) {
+            // $this->conn = new mysqli($this->server_name, $this->username, $this->password, $this->database_intern);
             $sqlPostPaginator = "SELECT * FROM db_posts ORDER BY id ASC LIMIT $key_onPage, $rec_onPage";
-            return $sqlPostPaginator;
+            $result = $this->conn->query($sqlPostPaginator);
+            return $result;
         }
 
-         public function insertDataPost($create_at, $update_at) {
-            $sqlInsertData = "INSERT into db_posts VALUES ('', 'title1', 'description1', 'image.jpg', 1, '$this->create_at', '$this->update_at'), 
-                                                ('', 'title2', 'description2', 'abc.jpg', 2, '$this->create_at', '$this->update_at'), 
-                                                ('', 'title3', 'description3', 'abc.jpg', 1, '$this->create_at', '$this->update_at'), 
-                                                ('', 'title4', 'description4', 'image.jpg', 1, '$this->create_at', '$this->update_at'), 
-                                                ('', 'title5', 'description5', 'image.jpg', 2, '$this->create_at', '$this->update_at'), 
-                                                ('', 'title6', 'description6', 'image.jpg', 1, '$this->create_at', '$this->update_at'), 
-                                                ('', 'title7', 'description7', 'image.jpg', 1, '$this->create_at', '$this->update_at'), 
-                                                ('', 'title8', 'description8', 'abc.jpg', 1, '$this->create_at', '$this->update_at'), 
-                                                ('', 'title9', 'description9', 'image.jpg', 1, '$this->create_at', '$this->update_at'), 
-                                                ('', 'title10', 'description10', 'image.jpg', 1, '$this->create_at', '$this->update_at'), 
-                                                ('', 'title11', 'description11', 'image.jpg', 1, '$this->create_at', '$this->update_at')";
-            return $sqlInsertData;
+        public function insertDataPost() {
+            $create_at = date('Y-m-d H-i-s');
+            $update_at = date('Y-m-d H-i-s');
+            $sqlInsertData = "INSERT into db_posts VALUES (NULL, 'title1', 'description1', 'image.jpg', 1, '$create_at', '$update_at'), 
+                                                (NULL, 'title2', 'description2', 'abc.jpg', 2, '$create_at', '$update_at'), 
+                                                (NULL, 'title3', 'description3', 'abc.jpg', 1, '$create_at', '$update_at'), 
+                                                (NULL, 'title4', 'description4', 'image.jpg', 1, '$create_at', '$update_at'), 
+                                                (NULL, 'title5', 'description5', 'image.jpg', 2, '$create_at', '$update_at'), 
+                                                (NULL, 'title6', 'description6', 'image.jpg', 1, '$create_at', '$update_at'), 
+                                                (NULL, 'title7', 'description7', 'image.jpg', 1, '$create_at', '$update_at'), 
+                                                (NULL, 'title8', 'description8', 'abc.jpg', 1, '$create_at', '$update_at'), 
+                                                (NULL, 'title9', 'description9', 'image.jpg', 1, '$create_at', '$update_at'), 
+                                                (NULL, 'title10', 'description10', 'image.jpg', 1, '$create_at', '$update_at'), 
+                                                (NULL, 'title11', 'description11', 'image.jpg', 1, '$create_at', '$update_at')";
+            // $this->conn = new mysqli($this->server_name, $this->username, $this->password, $this->database_intern);
+            
+            $check = $this->conn->query($sqlInsertData);
+            return $check;
         }
 
     }
