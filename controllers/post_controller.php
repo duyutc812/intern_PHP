@@ -109,7 +109,7 @@
                 } else {
                     $image = $posts->fetch_assoc()['image'];
                 }
-                //$this->postModel->updatePost($id_post, $title, $description, $image, $status);
+                $this->postModel->updatePost($id_post, $title, $description, $image, $status);
             }
             $postView->editPost($posts);
         }
