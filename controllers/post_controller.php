@@ -94,14 +94,22 @@
             $posts = $this->postModel->getDetailPost($id_post);
             require_once("./views/edit_post_view.php");
             $postView = new SetPost();
+            // echo getcwd();
             if (isset($_POST['smb'])) {
                 $title = $_POST['title'];
                 $description = $_POST['description'];
-                if ($_POST['image']) {
-                    $image = $_POST['image'];
-                } else $image = $posts->fetch_assoc()['image'];
                 $status = $_POST['status'];
-                $this->postModel->updatePost($id_post, $title, $description, $image, $status);
+                if ($_FILES['image']['name']) {
+                    $image = basename($_FILES['image']['name']);
+                    // echo var_dump($_FILES['image']['size']);
+                    $temp_name = $_FILES['image']['tmp_name'];
+                    $folder = "assets/img/". $image;
+                    // echo var_dump(copy($temp_name, $folder));
+                    echo var_dump(move_uploaded_file($temp_name, $folder));
+                } else {
+                    $image = $posts->fetch_assoc()['image'];
+                }
+                //$this->postModel->updatePost($id_post, $title, $description, $image, $status);
             }
             $postView->editPost($posts);
         }

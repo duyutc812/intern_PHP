@@ -35,7 +35,7 @@
                         </div>
                         <table data-toolbar="#toolbar" data-toggle="table" class="table table-hover">
                         <thead>
-                            <form  method="post" accept-charset="utf-8">
+                            <form  method="post" accept-charset="utf-8" enctype="multipart/form-data">
                             <tr>
                                 <th style="width: 20%">
                                     <div class="th-inner sortable"><b>Title</b></div>
