@@ -15,14 +15,24 @@
 
         // get all post
         public function getAllPost() {
-            $result = $this->db->sql_getPost();
-            return $result;
+            $result = $this->db->sql_getPost(); 
+            if ($result){
+                return $result;
+            }
+            else {
+                die("no result get post!");
+            }
         }
 
         // get detail post
         public function getDetailPost($id_post) {
             $result = $this->db->sql_getDetailPost($id_post);
-            return $result;
+            if ($result){
+                return $result;
+            }
+            else {
+                die("no result get detail post!");
+            }
         }
 
         // add post

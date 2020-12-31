@@ -20,7 +20,7 @@
                 $this->conn->query($sql_create_db);
                 $this->conn->set_charset('UTF-8');
             }
-             // create table
+            // create table
             $this->conn = new mysqli($this->server_name, $this->username, $this->password, $this->database_intern);
             // check table exists
             $table_exists = $this->conn->query("SELECT * FROM db_post");
@@ -109,10 +109,8 @@
                                                 (NULL, 'title10', 'description10', 'image.jpg', 1, '$create_at', '$update_at'), 
                                                 (NULL, 'title11', 'description11', 'image.jpg', 1, '$create_at', '$update_at')";
             // $this->conn = new mysqli($this->server_name, $this->username, $this->password, $this->database_intern);
-            
             $check = $this->conn->query($sqlInsertData);
             return $check;
         }
-
     }
 ?>
